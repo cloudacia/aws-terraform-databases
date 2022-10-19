@@ -112,7 +112,7 @@ variable "ssh_public_key" {
 ###############################################
 variable "rds_engine" {
   type    = string
-  default = "mysql"
+  default = "postgres"
 }
 
 ###############################################
@@ -120,7 +120,7 @@ variable "rds_engine" {
 ###############################################
 variable "rds_engine_version" {
   type    = string
-  default = "8.0.28"
+  default = "13.7"
 }
 
 ###############################################

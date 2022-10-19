@@ -73,17 +73,17 @@ resource "aws_security_group" "ssm_endpoint" {
 ###############################################
 #  AWS SECURITY GROUP FOR RDS                 #
 ###############################################
-resource "aws_security_group" "mysql_sg" {
-  name        = "MySQL RDS"
-  description = "Allow incoming traffic to port 3306/TCP"
+resource "aws_security_group" "postgresql_sg" {
+  name        = "PostgreSQL RDS"
+  description = "Allow incoming traffic to port 5432/TCP"
   vpc_id      = aws_vpc.this.id
   tags = {
     Name = "mysql_sg"
   }
 
   ingress {
-    from_port   = 3306
-    to_port     = 3306
+    from_port   = 5432
+    to_port     = 5432
     protocol    = "tcp"
     cidr_blocks = ["10.0.0.0/16"]
   }
