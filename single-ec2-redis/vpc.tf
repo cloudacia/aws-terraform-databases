@@ -98,7 +98,7 @@ resource "aws_subnet" "private_subnet_03" {
 }
 
 ###############################################
-#  SUBNET 04                                  #
+#  SUBNET 03                                  #
 ###############################################
 resource "aws_subnet" "private_subnet_04" {
   vpc_id            = aws_vpc.this.id
@@ -135,17 +135,4 @@ resource "aws_route_table_association" "rta03" {
 resource "aws_route_table_association" "rta04" {
   subnet_id      = aws_subnet.private_subnet_04.id
   route_table_id = aws_route_table.rt02.id
-}
-
-################################################
-#  VPC ENDPOINT                                #
-################################################
-resource "aws_vpc_endpoint" "s3" {
-  vpc_id          = aws_vpc.this.id
-  service_name    = var.s3_endpoint
-  route_table_ids = [aws_route_table.rt02.id]
-
-  tags = {
-    Name = "S3 VPC ENDPOINT"
-  }
 }

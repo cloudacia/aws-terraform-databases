@@ -15,7 +15,7 @@ resource "aws_neptune_cluster" "neptune_cluster_1" {
   backup_retention_period             = 5
   preferred_backup_window             = "07:00-09:00"
   skip_final_snapshot                 = true
-  iam_database_authentication_enabled = true
+  iam_database_authentication_enabled = false
   vpc_security_group_ids              = [aws_security_group.mysql_sg.id]
   neptune_subnet_group_name           = aws_db_subnet_group.rds_subnet_groups_01.name
   apply_immediately                   = true
@@ -28,6 +28,6 @@ resource "aws_neptune_cluster_instance" "neptune_instance" {
   count              = 2
   cluster_identifier = aws_neptune_cluster.neptune_cluster_1.id
   engine             = "neptune"
-  instance_class     = "db.r5.large"
+  instance_class     = "db.t3.medium"
   apply_immediately  = true
 }
